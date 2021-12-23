@@ -1,0 +1,452 @@
+<!--<!DOCTYPE html> {% load static %}-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <meta charset="UTF-8" />-->
+<!--    <meta token={{ csrf_token }} class="csrf_token">-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="{% static 'css/materialize.css' %}" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="{% static 'css/main.css' %}" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <link rel="stylesheet" href="{% static 'css/admin.css' %}" />&ndash;&gt;-->
+<!--    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1.0" />-->
+<!--    <link href='https://fonts.googleapis.com/css?family=Saira Semi Condensed' rel='stylesheet'>-->
+<!--    <link href='https://fonts.googleapis.com/css?family=Sail' rel='stylesheet'>-->
+<!--    <link rel="stylesheet" href="C:\Users\Nur\Desktop\HTML\font-awesome-4.7.0\css\font-awesome.min.css">-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>-->
+<!--    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">-->
+<!--    <title>admin</title>-->
+<!--    <meta charset="UTF-8">-->
+<!--    <meta name="viewport" content="width=device-width, initial-scale=1">-->
+<!--    <link rel="stylesheet" href="Stores.css">-->
+<!--    <link href="{% static 'css/Stores.css' %}" rel="stylesheet">-->
+<!--    <link href="{% static 'css/font-awesome-4.7.0/css/font-awesome.min.css' %}" rel="stylesheet">-->
+<!--    <title>Lab Work #2</title>-->
+<!--</head>-->
+
+<!--<body>-->
+<!--    <div style="padding:3px; background-color: EDAF66; border-radius: 20px; margin-top: 10px;">-->
+<!--        <div class="header white-text">-->
+<!--            <h1 style="display: inline">Welcome, Admin</h1>-->
+<!--            <a href="/" class="custom-btn right" style="font-size: calc(0.8vw + 0.8em)">Log out</a>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--    {% if msg %}-->
+<!--    <div class="container center-align white-text grey darken-4">-->
+<!--      <h1 class="white-text center-align">{{msg}}</h1>-->
+<!--    </div>-->
+<!--    {% else %}-->
+
+<!--    <div style="padding:3px; background-color: EDAF66; border-radius: 20px; margin-top: 10px;">-->
+<!--    <div class="background">-->
+<!--      <div class="inner-canvas" style="padding: 2% 3% 2% 3%; min-height: 750px">-->
+<!--&lt;!&ndash;        <h4 class="white-text">What are we going to do?</h4>&ndash;&gt;-->
+<!--        <div class="row">-->
+<!--          {% if users %}-->
+<!--          <div class="col s12 m6 l4">-->
+<!--            <ul-->
+<!--              class="collapsible"-->
+<!--              style="border: 0px transparent black !important; outline: none">-->
+<!--              <li-->
+<!--                style="border: 0px transparent black !important; outline: none">-->
+<!--                <div-->
+<!--                  class="-->
+<!--                    collapsible-header-->
+<!--                    thin-writing-->
+<!--                    element-header-->
+<!--                    center-align-->
+<!--                  ">-->
+<!--                  Users-->
+<!--                </div>-->
+
+<!--                <div class="collapsible-body black-text thin-writing my-3">-->
+<!--                  <div class="list-of-items">-->
+<!--                    {% for userEntity in users %}-->
+<!--                    <div class="item" username="{{userEntity.username}}"> &lt;!&ndash; user_id="{{userEntity.id}}"  &ndash;&gt;-->
+<!--                      {{userEntity.first_name}} {{userEntity.last_name}}-->
+
+<!--                      <a href="#" class="custom-btn-red right black-text user-deleting-btn"-->
+<!--                        >Delete</a>-->
+<!--                      <a href="#user-details" class="custom-btn-green right black-text user-update-btn modal-trigger"-->
+<!--                      >Update</a>-->
+<!--                      <a href="#user-details" class="custom-btn-blue right black-text user-details-btn modal-trigger"-->
+<!--                        >Info</a>-->
+<!--                    </div>-->
+<!--                    <hr />-->
+<!--                    {% endfor %}-->
+<!--                    <div class="center-align">-->
+<!--                      <a href="#user-details" class="modal-trigger custom-btn black-text user-creation-btn">Create one</a>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    {% endif %}-->
+
+<!--            {% if books %}-->
+<!--    <div class="col s12 m6 l4">-->
+<!--        <ul class="collapsible" style="border: 0px transparent black !important; outline: none">-->
+<!--            <li style="border: 0px transparent black !important; outline: none">-->
+<!--                <div class="-->
+<!--                    collapsible-header-->
+<!--                    thin-writing-->
+<!--                    element-header-->
+<!--                    center-align-->
+<!--                  ">-->
+<!--                    Books-->
+<!--                </div>-->
+<!--                <div class="collapsible-body black-text thin-writing my-3">-->
+<!--                    <div class="list-of-items">-->
+<!--                        {% for book in books %}-->
+<!--                         <div class="item" name="{{book.name}}">-->
+
+<!--                            {{ book.id }}.-->
+<!--                            {{book.name}}-->
+<!--                            <a href="#" class="custom-btn-red right black-text book-deleting-btn">Delete</a>-->
+<!--                            <a href="#book-details" class="custom-btn-green right black-text book-update-btn modal-trigger">Update</a>-->
+<!--                            <a href="#book-details" class="custom-btn-blue right black-text book-details-btn modal-trigger">Info</a>-->
+<!--                        </div>-->
+<!--                    <hr />-->
+<!--                    {% endfor %}-->
+<!--                    <div class="center-align">-->
+<!--                     <a href="#book-details" class="modal-trigger custom-btn black-text book-creation-btn">Create one</a>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </div>-->
+<!--    {% endif %}-->
+<!--                 </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+<!--&lt;!&ndash;    &ndash;&gt;-->
+<!--    <div id="book-details" class="modal grey darken-4 white-text" style="max-height: 100%; overflow: visible;">-->
+<!--        <div class="modal-content center-align container">-->
+<!--            <h4 class="white-text modal-book-header">Book #1231252</h4>   &lt;!&ndash;    &ndash;&gt;&lt;!&ndash;    &ndash;&gt;&lt;!&ndash;    &ndash;&gt;&lt;!&ndash;    &ndash;&gt;&lt;!&ndash;    &ndash;&gt;&lt;!&ndash;    &ndash;&gt;&lt;!&ndash;    &ndash;&gt;&lt;!&ndash;    &ndash;&gt;-->
+<!--            <div class="row">-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Name</label>-->
+<!--                    <input class="book-info-field grey-text center-align name" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Description</label>-->
+<!--                    <input class="book-info-field grey-text center-align description" type="text" disabled value="Alexander">-->
+<!--                </div>-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Image</label>-->
+<!--                    <input class="book-info-field grey-text center-align image" type="text" disabled value="Lee">-->
+<!--                </div>-->
+<!--                <div class="col s12 m4">-->
+<!--                    <label for="">Stock</label>-->
+<!--                    <input class="book-info-field grey-text center-align stock" type="text" disabled value="26">-->
+<!--                </div>-->
+<!--                <div class="col s12 m4">-->
+<!--                    <label for="">Money</label>-->
+<!--                    <input class="book-info-field grey-text center-align money" type="text" disabled value="Senior">-->
+<!--                </div>-->
+<!--                <div class="col s12 m4">-->
+<!--                    <label for="">Year</label>-->
+<!--                    <input class="book-info-field grey-text center-align year" type="text" disabled value="54372172$">-->
+<!--                </div>-->
+<!--                <div class="col s12 m12">-->
+<!--                    <label for="">Page</label>-->
+<!--                    <input class="book-info-field grey-text center-align page" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m12">-->
+<!--                    <label for="">Binding</label>-->
+<!--                    <input class="book-info-field grey-text center-align binding" type="text" disabled value="country">-->
+<!--                </div>-->
+<!--                <div class="col s12 m4">-->
+<!--                    <label for="">Genres</label>-->
+<!--                    <input class="book-info-field grey-text center-align genres" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m4">-->
+<!--                    <label for="">Authors</label>-->
+<!--                    <input class="book-info-field grey-text center-align authors" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m4">-->
+<!--                    <label for="">Date</label>-->
+<!--                    <input class="book-info-field grey-text center-align date" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Category</label>-->
+<!--                    <input class="book-info-field grey-text center-align category" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Url</label>-->
+<!--                    <input class="book-info-field grey-text center-align url" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Pdf</label>-->
+<!--                    <input class="book-info-field grey-text center-align pdf" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <button class="green btn white-text update-allowing-btn functionality-btn">UPDATE</button>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+
+
+<!--&lt;!&ndash;    &ndash;&gt;-->
+<!--    <div id="user-details" class="modal grey darken-4 white-text" style="max-height: 100%; overflow: visible;">-->
+<!--        <div class="modal-content center-align container">-->
+<!--            <h4 class="white-text modal-user-header">User #1231252</h4>-->
+<!--            <div class="row">-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Username</label>-->
+<!--                    <input class="user-info-field grey-text center-align username" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">First name</label>-->
+<!--                    <input class="user-info-field grey-text center-align first_name" type="text" disabled value="Alexander">-->
+<!--                </div>-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Last name</label>-->
+<!--                    <input class="user-info-field grey-text center-align last_name" type="text" disabled value="Lee">-->
+<!--                </div>-->
+<!--&lt;!&ndash;                <div class="col s12 m4">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="">Age</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="user-info-field grey-text center-align age" type="text" disabled value="26">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col s12 m4">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="">Senior</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="user-info-field grey-text center-align is_senior" type="text" disabled value="Senior">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col s12 m4">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="">Balance</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="user-info-field grey-text center-align balance" type="text" disabled value="54372172$">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col s12 m12">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="">Registration date</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="user-info-field grey-text center-align date_joined" type="text" disabled value="2021.21.41">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col s12 m12">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="">Country</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="user-info-field grey-text center-align country" type="text" disabled value="country">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col s12 m4">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="">Amount of arrived partners</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="user-info-field grey-text center-align with_amount" type="text" disabled value="2021.21.41">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col s12 m4">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="">Insurance</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="user-info-field grey-text center-align insurance" type="text" disabled value="2021.21.41">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--&lt;!&ndash;                <div class="col s12 m4">&ndash;&gt;-->
+<!--&lt;!&ndash;                    <label for="">Hotel room</label>&ndash;&gt;-->
+<!--&lt;!&ndash;                    <input class="user-info-field grey-text center-align hotel_room" type="text" disabled value="2021.21.41">&ndash;&gt;-->
+<!--&lt;!&ndash;                </div>&ndash;&gt;-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Email</label>-->
+<!--                    <input class="user-info-field grey-text center-align email" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">Password hash</label>-->
+<!--                    <input class="user-info-field grey-text center-align password" type="text" disabled value="2021.21.41">-->
+<!--                </div>-->
+<!--                <button class="green btn white-text update-allowing-btn functionality-btn">UPDATE</button>-->
+
+<!--            </div>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--    {% endif %}-->
+<!--    <script src="{% static 'js/materialize.js' %}"></script>-->
+<!--    <script src="{% static 'js/adminDeletingElements.js' %}"></script>-->
+<!--    <script src="{% static 'js/bookDeletingElements.js' %}"></script>-->
+<!--    <script>-->
+<!--        document.addEventListener("DOMContentLoaded", function() {-->
+<!--            var elems = document.querySelectorAll(".sidenav");-->
+<!--            var options = {};-->
+<!--            var instances = M.Sidenav.init(elems, options);-->
+<!--        });-->
+<!--    </script>-->
+<!--    <script>-->
+<!--        document.addEventListener("DOMContentLoaded", function() {-->
+<!--            var elems = document.querySelectorAll(".collapsible");-->
+<!--            var options = {};-->
+<!--            var instances = M.Collapsible.init(elems, options);-->
+<!--        });-->
+<!--    </script>-->
+<!--    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>-->
+<!--    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>-->
+<!--    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>-->
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html> {% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta token={{ csrf_token }} class="csrf_token">
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/main.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/admin.css' %}" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lab Work #2</title>
+</head>
+
+<body>
+    <div class="header white-text">
+        <h1 style="display: inline">Welcome, Admin</h1>
+        <a href="/" class="custom-btn right" style="font-size: calc(0.8vw + 0.8em)">Log out</a
+      >
+    </div>
+
+    {% if msg %}
+    <div class="container center-align white-text grey darken-4">
+      <h1 class="white-text center-align">{{msg}}</h1>
+    </div>
+    {% else %}
+    <div class="background">
+      <div class="inner-canvas" style="padding: 2% 3% 2% 3%; min-height: 750px">
+        <h4 class="white-text">What are we going to do?</h4>
+        <div class="row">
+          {% if users %}
+          <div class="col s12 m6 l4">
+            <ul
+              class="collapsible"
+              style="border: 0px transparent black !important; outline: none"
+            >
+              <li
+                style="border: 0px transparent black !important; outline: none"
+              >
+                <div
+                  class="
+                    collapsible-header
+                    thin-writing
+                    element-header
+                    center-align
+                  "
+                >
+                  Users
+                </div>
+                <div class="collapsible-body black-text thin-writing">
+                  <div class="list-of-items">
+                    {% for userEntity in users %}
+                    <div class="item" user_id="{{userEntity.id}}">
+                      {{userEntity.first_name}} {{userEntity.last_name}}
+                      ({{userEntity.id}})
+                      <a href="#" class="custom-btn-red right black-text user-deleting-btn"
+                        >Delete</a
+                      >
+                      <a href="#user-details" class="custom-btn-green right black-text user-update-btn modal-trigger"
+                        >Update</a
+                      >
+                      <a href="#user-details" class="custom-btn-blue right black-text user-details-btn modal-trigger"
+                        >Info</a
+                      >
+                    </div>
+                    <hr />
+                    {% endfor %}
+                    <div class="center-align">
+                      <a href="#user-details" class="modal-trigger custom-btn black-text user-creation-btn">Create one</a>
+    </div>
+    </div>
+    </div>
+    </li>
+    </ul>
+    </div>
+    {% endif %} {% if feedbacks %}
+    <div class="col s12 m6 l4">
+        <ul class="collapsible" style="border: 0px transparent black !important; outline: none">
+            <li style="border: 0px transparent black !important; outline: none">
+                <div class="
+                    collapsible-header
+                    thin-writing
+                    element-header
+                    center-align
+                  ">
+                    Feedbacks
+                </div>
+                <div class="collapsible-body black-text thin-writing">
+                    <div class="list-of-items">
+                        {% for feedback in feedbacks %}
+                        <div class="item">
+                            {{feedback}}
+                            <a href="#" class="custom-btn-red right black-text">Delete</a
+                      >
+                      <a href="#" class="custom-btn-green right black-text"
+                        >Update</a
+                      >
+                      <a href="#" class="custom-btn-blue right black-text"
+                        >Info</a
+                      >
+                    </div>
+                    <hr />
+                    {% endfor %}
+                    <div class="center-align">
+                      <a href="" class="custom-btn black-text">Create one</a>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    {% endif %}
+    </div>
+    </div>
+    </div>
+
+
+    <div id="user-details" class="modal grey darken-4 white-text" style="max-height: 100%; overflow: visible;">
+        <div class="modal-content center-align container">
+            <h4 class="white-text modal-user-header">User #1231252</h4>
+            <div class="row">
+                <div class="col s12 m6">
+                    <label for="">First name</label>
+                    <input class="user-info-field grey-text center-align first_name" type="text" disabled value="Alexander">
+                </div>
+<!--                <div class="col s12 m6">-->
+<!--                    <label for="">ID</label>-->
+<!--                    <input class="user-info-field grey-text center-align id" type="text" disabled value="Alexander">-->
+<!--                </div>-->
+                <div class="col s12 m6">
+                    <label for="">Last name</label>
+                    <input class="user-info-field grey-text center-align last_name" type="text" disabled value="Lee">
+                </div>
+
+                <div class="col s12 m6">
+                    <label for="">Username</label>
+                    <input class="user-info-field grey-text center-align username" type="text" disabled value="2021.21.41">
+                </div>
+                <div class="col s12 m6">
+                    <label for="">Email</label>
+                    <input class="user-info-field grey-text center-align email" type="text" disabled value="2021.21.41">
+                </div>
+                <div class="col s12 m6">
+                    <label for="">Password hash</label>
+                    <input class="user-info-field grey-text center-align password" type="text" disabled value="2021.21.41">
+                </div>
+                <button class="green btn white-text update-allowing-btn functionality-btn">UPDATE</button>
+
+            </div>
+        </div>
+    </div>
+    {% endif %}
+    <script src="{% static 'js/materialize.js' %}"></script>
+    <script src="{% static 'js/adminDeletingElements.js' %}"></script>
+    <script src="{% static 'js/modal.js' %}"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var elems = document.querySelectorAll(".sidenav");
+            var options = {};
+            var instances = M.Sidenav.init(elems, options);
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            var elems = document.querySelectorAll(".collapsible");
+            var options = {};
+            var instances = M.Collapsible.init(elems, options);
+        });
+    </script>
+    <script src="{% static 'js/modal.js' %}"></script>
+</body>
+
+</html>
